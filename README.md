@@ -14,10 +14,10 @@ This repository contains two usage examples below.
 
 ## Quick Start
 #### Install
-Package manager console:
-<pre>
-<span style="color: silver;"><i>In preparation...</i></span>
-</pre>
+Package Manager console: 
+```
+PM> Install-Package ShairportSync.TrackInfoReader –IncludePrerelease
+```
 #### Subscribe Track Information
 ```csharp
 var trackInfoSource = TrackInfoReader.GetObservable("/tmp/shaiport-sync-metadata");
