@@ -1,0 +1,44 @@
+﻿html {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    font-family: sans-serif;
+    /*font-family: "Interstate","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Garuda,Verdana,Tahoma,sans-serif;*/
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shadow {
+    display: inline-block;
+    box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.8);
+}
+
+#track {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#artwork {
+    height: 256px;
+}
+
+#artist {
+    font-weight: 400;
+}
+
+#album {
+    color: gray;
+    /*line-height: 0.9;*/
+}
+
+#song {
+    font-weight: 700;
+}

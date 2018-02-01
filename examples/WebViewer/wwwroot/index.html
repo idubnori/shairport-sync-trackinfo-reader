@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="StyleSheet.css" rel="stylesheet" />
+    <title>Web Viewer</title>
+</head>
+<body>
+    <div id="track">
+        <div id="artwork-container">
+            <img id="artwork" class="shadow" src="./artworkImages/default.png" />
+        </div>
+        <div id="artist">Artist</div>
+        <div id="album">Album</div>
+        <div id="song">Song</div>
+    </div>
+
+    <script type="text/javascript">
+        if (typeof Promise === 'undefined') {
+            document.write(
+                '<script type="text/javascript" src="scripts/signalr-clientES5-1.0.0-alpha2-final.min.js"><\/script>');
+        } else {
+            document.write(
+                '<script type="text/javascript" src="scripts/signalr-client-1.0.0-alpha2-final.min.js"><\/script>');
+        }
+    </script>
+    <script src="./scripts/TrackSubscriber.js"></script>
+</body>
+</html>
