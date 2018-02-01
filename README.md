@@ -1,4 +1,4 @@
-﻿ShairportSync.TrackInfoReader
+﻿ShairportSync.TrackInfoReader for .NET
 ===
 ShairportSync.TrackInfoReader is a [shairport-sync](https://github.com/mikebrady/shairport-sync) [metadata](https://github.com/mikebrady/shairport-sync#metadata) parser which provides track information (artist, album, song title and artwork image) as `IObservable<TrackInfo>`.
 
