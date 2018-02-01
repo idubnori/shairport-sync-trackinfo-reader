@@ -17,10 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackInfoReader", "src\Trac
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{71E752BD-00BB-41B6-9F22-E44EA2CB9F43}"
 	ProjectSection(SolutionItems) = preProject
-		docs\console-viewer-demo.gif = docs\console-viewer-demo.gif
 		LICENSE = LICENSE
 		README.md = README.md
-		docs\web-viewer-demo.gif = docs\web-viewer-demo.gif
 	EndProjectSection
 EndProject
 Global
