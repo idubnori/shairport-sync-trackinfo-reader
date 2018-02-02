@@ -26,10 +26,12 @@ trackInfoSource.Subscribe(t => Console.WriteLine(t.Artist));
 
 ## Run examples on Raspberry Pi 2/3
 #### Preparation
-Download, extract and set permission on your Pi.
-<pre>
-<span style="color: silver;"><i>In preparation...</i></span>
-</pre>
+On your Pi, download, unzip and set permission as follows.
+```bash
+wget https://github.com/idubnori/shairport-sync-trackinfo-reader/releases/download/v0.1.0-alpha1/examples-linux-arm.zip
+unzip examples-linux-arm.zip
+chmod 744 ./console-viewer/ConsoleViewer ./web-viewer/WebViewer
+```
 Run shairport-sync with metadata pipe parameter.
 ```bash
 shairport-sync --pipe=/tmp/shairport-sync-metadata
