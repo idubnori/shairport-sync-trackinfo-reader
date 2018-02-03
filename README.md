@@ -1,11 +1,13 @@
 ﻿ShairportSync.TrackInfoReader for .NET
 ===
-ShairportSync.TrackInfoReader is a [shairport-sync](https://github.com/mikebrady/shairport-sync) [metadata](https://github.com/mikebrady/shairport-sync#metadata) parser which provides track information (artist, album, song title and artwork image) as `IObservable<TrackInfo>`.
+[![Build status](https://ci.appveyor.com/api/projects/status/y4vtm6cnqvm4ie5i/branch/master?svg=true)](https://ci.appveyor.com/project/idubnori/shairport-sync-trackinfo-reader/branch/master)
 
-This works on .NET Standard 2.0 compliant platforms like .NET Core 2 / Mono.<br>
-(i.e. Raspberry Pi 2/3, Mac, etc.)
+ShairportSync.TrackInfoReader is a [shairport-sync](https://github.com/mikebrady/shairport-sync) [metadata](https://github.com/mikebrady/shairport-sync#metadata) parser which provides track information (artist, album, song title, artwork image, etc.) as Rx (`IObservable<TrackInfo>`).
+
+This library works on .NET Standard 2.0 compliant platforms like .NET Core 2 / Mono.<br>
+i.e. works on Raspberry Pi 2 / 3, Mac, Linux, etc.
 ## Examples
-This repository contains two usage examples below.
+Contains two usage example apps below.
 #### Web Viewer
 ![WebViewer](./docs/web-viewer-demo.gif)
 
@@ -13,20 +15,27 @@ This repository contains two usage examples below.
 ![ConsoleViewer](./docs/console-viewer-demo.gif)
 
 ## Quick Start
-#### Install
-Package Manager console: 
+#### Install via NuGet
+Package Manager: 
 ```
 PM> Install-Package ShairportSync.TrackInfoReader –IncludePrerelease
 ```
+
+.NET CLI:
+```bash
+dotnet add package ShairportSync.TrackInfoReader
+```
+
 #### Subscribe Track Information
 ```csharp
 var trackInfoSource = TrackInfoReader.GetObservable("/tmp/shaiport-sync-metadata");
-trackInfoSource.Subscribe(t => Console.WriteLine(t.Artist));
+trackInfoSource.Subscribe(t => Console.WriteLine($"{t.Artist} {t.Album} {t.Song}"));
 ```
 
-## Run examples on Raspberry Pi 2/3
+## Run examples on Raspberry Pi 2 / 3
 #### Preparation
-On your Pi, download, unzip and set permission as follows.
+On your Pi, download, unzip and set permission as follows.<br>
+(No need to install .NET Core.)
 ```bash
 wget https://github.com/idubnori/shairport-sync-trackinfo-reader/releases/download/v0.1.0-alpha1/examples-linux-arm.zip
 unzip examples-linux-arm.zip
@@ -58,13 +67,12 @@ Open `TrackInfoReader.sln`. And Build it.
 dotnet build
 ```
 
-#### Publish Build for Pi
+#### Publish build example apps for Pi
 ```bash
 # Move to ConsoleViewer or WebViewer directory.
 dotnet publish -c Release -r linux-arm
-# Get binaries from ./bin/Release/netcoreapp2.0/linux-arm/publish
+# Deploy ./bin/Release/netcoreapp2.0/linux-arm/publish/ to Pi.
 ```
-
 
 ## License
 ShairportSync.TrackInfoReader is Copyright © 2018 idubnori under the [MIT License](./LICENSE).
