@@ -1,5 +1,7 @@
 ﻿ShairportSync.TrackInfoReader for .NET
 ===
+[![NuGet](https://img.shields.io/nuget/v/ShairportSync.TrackInfoReader.svg?maxAge=2592000)](https://www.nuget.org/packages/ShairportSync.TrackInfoReader/)
+[![GitHub license](https://img.shields.io/github/license/idubnori/shairport-sync-trackinfo-reader.svg)](https://github.com/idubnori/shairport-sync-trackinfo-reader/blob/master/LICENSE)
 [![Build status](https://ci.appveyor.com/api/projects/status/y4vtm6cnqvm4ie5i/branch/master?svg=true)](https://ci.appveyor.com/project/idubnori/shairport-sync-trackinfo-reader/branch/master)
 
 ShairportSync.TrackInfoReader is a [shairport-sync](https://github.com/mikebrady/shairport-sync) [metadata](https://github.com/mikebrady/shairport-sync#metadata) parser which provides track information (artist, album, song title, artwork image, etc.) as Rx (`IObservable<TrackInfo>`).
