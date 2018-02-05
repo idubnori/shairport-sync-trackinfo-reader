@@ -28,7 +28,7 @@ dotnet add package ShairportSync.TrackInfoReader
 
 #### Subscribe Track Information
 ```csharp
-var trackInfoSource = TrackInfoReader.GetObservable("/tmp/shaiport-sync-metadata");
+var trackInfoSource = TrackInfoReader.GetObservable("/tmp/shairport-sync-metadata");
 trackInfoSource.Subscribe(t => Console.WriteLine($"{t.Artist} {t.Album} {t.Song}"));
 ```
 
