@@ -20,7 +20,7 @@ namespace ShairportSync.Metadata.Parsers
 
         private static IObservable<TrackInfo> Parse(this IObservable<Item> itemSource)
         {
-            var artworkMetadataSource = itemSource.Where(m => m.Code == "PICT");
+            var artworkItemSource = itemSource.Where(m => m.Code == "PICT");
 
             var bufferClosing = itemSource.Where(m => m.Code == "mden");
             var trackSource = itemSource
@@ -32,10 +32,10 @@ namespace ShairportSync.Metadata.Parsers
                 .Where(t => t.Item1?.Mper != t.Item2.Mper && t.Item2.Mper != null)
                 .Select(t => t.Item2);
 
-            var artworkTrackSource = artworkMetadataSource
-                .WithLatestFrom(trackSource, (i, h) => new Artwork(h) { Artwork = i.Data });
+            var artworkTrackSource = artworkItemSource
+                .WithLatestFrom(trackSource, (i, t) => new Artwork(t) { Artwork = i.Data });
 
-            return mperChangesTrackSource.Merge(artworkTrackSource).ToWithArtwork();
+            return mperChangesTrackSource.ToWithArtwork(artworkTrackSource);
         }
 
         private static TrackInfo ToTrack(this IList<Item> items)
@@ -52,14 +52,12 @@ namespace ShairportSync.Metadata.Parsers
             return trackInfo;
         }
 
-        private static IObservable<TrackInfo> ToWithArtwork(this IObservable<TrackInfo> trackSource)
+        private static IObservable<TrackInfo> ToWithArtwork(this IObservable<TrackInfo> trackSource, IObservable<Artwork> artworkSource)
         {
-            var artworkSource = trackSource.Where(t => t is Artwork);
-
             var trackWithArtworkSource = trackSource
-                .WithLatestFrom(artworkSource.StartWith(default(Artwork)), (t, a) => t.UpdateArtwork((Artwork)a));
+                .WithLatestFrom(artworkSource.StartWith(default(Artwork)), (t, a) => t.UpdateArtwork(a));
 
-            return trackWithArtworkSource;
+            return trackWithArtworkSource.Merge(artworkSource);
         }
 
         private static TrackInfo UpdateArtwork(this TrackInfo trackInfo, Artwork artwork)

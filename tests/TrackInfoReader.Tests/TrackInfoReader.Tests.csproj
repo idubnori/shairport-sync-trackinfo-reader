@@ -26,6 +26,9 @@
     <ProjectReference Include="..\..\src\TrackInfoReader\TrackInfoReader.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <None Update="TestData\next-song-no-image-in-same-album">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="TestData\metadata-onetrack-oneartwork">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
