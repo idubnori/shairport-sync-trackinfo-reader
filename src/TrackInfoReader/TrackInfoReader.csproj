@@ -11,18 +11,19 @@
     <RootNamespace>ShairportSync.Metadata</RootNamespace>
     <Authors>idubnori</Authors>
     <Company />
-    <Version>0.1.0-alpha1</Version>
+    <Version>0.1.0-alpha2</Version>
     <Copyright>Copyright (c) 2018 idubnori.</Copyright>
     <PackageProjectUrl>https://github.com/idubnori/shairport-sync-trackinfo-reader/</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/idubnori/shairport-sync-trackinfo-reader/blob/master/LICENSE</PackageLicenseUrl>
     <PackageTags>shairport-sync, metadata, track, Raspberry Pi, System.Reactive</PackageTags>
-    <Description>ShairportSync.TrackInfoReader is a shairport-sync metadata parser which provides track information (artist, album, song title and artwork image) as  IObservable&lt;TrackInfo&gt; .
+    <Description>ShairportSync.TrackInfoReader is a shairport-sync metadata parser which provides track information (artist, album, song title, artwork image, etc.) as Rx ( IObservable&lt;TrackInfo&gt; ).
 
-This works on .NET Standard 2.0 compliant platforms like .NET Core 2 / Mono.
- (i.e. Raspberry Pi 2/3, Mac, etc.)</Description>
-    <PackageReleaseNotes>First release.</PackageReleaseNotes>
-    <AssemblyVersion>0.1.0.1</AssemblyVersion>
-    <FileVersion>0.1.0.1</FileVersion>
+This library works on .NET Standard 2.0 compliant platforms like .NET Core 2 / Mono.
+i.e. works on Raspberry Pi 2 / 3, Mac, Linux, etc.
+</Description>
+    <PackageReleaseNotes>https://github.com/idubnori/shairport-sync-trackinfo-reader/releases</PackageReleaseNotes>
+    <AssemblyVersion>0.1.0.2</AssemblyVersion>
+    <FileVersion>0.1.0.2</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

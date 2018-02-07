@@ -43,6 +43,8 @@ namespace TrackInfoReader.Tests
             //pipeServer.WaitForPipeDrain();
             await pipeServer.WriteMetadataAsync(metadataFile);
 
+            Logger.LogDebug(mockObserver.Messages.DebugInfo(t => t.DebugInfo()));
+
             using (new CompositeDisposable {trackSubscriber, pipeClient, pipeServer})
             {
                 return mockObserver;

@@ -6,14 +6,18 @@ using System.Reactive;
 using System.Threading.Tasks;
 using Microsoft.Reactive.Testing;
 using ShairportSync.Metadata.Models;
+using Xunit;
 
 namespace TrackInfoReader.Tests
 {
     internal static class HelperExtensions
     {
-        public static bool IsDefaultArtwork(this TrackInfo actual)
+        public static bool AssertDefaultArtwork(this TrackInfo actual)
         {
-            return actual.Artwork == "default.png"; // TODO 
+            var expected = "default.png"; // TODO 
+            Assert.Equal(expected, actual.Artwork);
+
+            return actual.Artwork == expected;
         }
 
         public static bool IsArtWork(this TrackInfo actual)

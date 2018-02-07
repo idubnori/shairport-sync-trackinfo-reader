@@ -1,6 +1,6 @@
 ﻿namespace ShairportSync.Metadata.Models
 {
-    public class Item
+    internal class Item
     {
         public string Type { get; set; }
         public string Code { get; set; }

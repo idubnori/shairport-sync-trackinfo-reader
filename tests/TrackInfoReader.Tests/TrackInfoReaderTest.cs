@@ -1,5 +1,6 @@
+using System.Linq;
+using System.Reactive;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
 using Microsoft.Reactive.Testing;
 using ShairportSync.Metadata.Models;
 using Xunit;
@@ -22,12 +23,21 @@ namespace TrackInfoReader.Tests
             var actual = await SubscribeMetadataFileAsync(metadataTestFile);
 
             actual.Messages.AssertEqual(
-                OnNext<TrackInfo>(0, t => t.IsSameSong(expectedTrack) && t.IsDefaultArtwork()),
+                OnNext<TrackInfo>(0, t => t.IsSameSong(expectedTrack) && t.AssertDefaultArtwork()),
                 OnNext<TrackInfo>(0, t => t.IsSameSong(expectedTrack) && t.IsArtWork()),
                 OnCompleted<TrackInfo>(0)
             );
+        }
 
-            Logger.LogDebug(actual.Messages.DebugInfo(t => t.DebugInfo()));
+        [Fact]
+        public async Task SecondSongWithNoArtwork_LastArtworkIsDefault()
+        {
+            var metadataTestFile = @"./TestData/next-song-no-image-in-same-album";
+
+            var actual = await SubscribeMetadataFileAsync(metadataTestFile);
+
+            var actualLastArtwork = actual.Messages[3].Value.Value;
+            actualLastArtwork.AssertDefaultArtwork();
         }
     }
 }
