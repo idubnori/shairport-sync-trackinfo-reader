@@ -39,7 +39,7 @@ trackInfoSource.Subscribe(t => Console.WriteLine($"{t.Artist} {t.Album} {t.Song}
 On your Pi, download, unzip and set permission as follows.<br>
 (No need to install .NET Core.)
 ```bash
-wget https://github.com/idubnori/shairport-sync-trackinfo-reader/releases/download/v0.1.0-alpha1/examples-linux-arm.zip
+wget https://github.com/idubnori/shairport-sync-trackinfo-reader/releases/download/v0.1.0-alpha2/examples-linux-arm.zip
 unzip examples-linux-arm.zip
 chmod 744 ./console-viewer/ConsoleViewer ./web-viewer/WebViewer
 ```
