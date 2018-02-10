@@ -1,6 +1,6 @@
 ﻿ShairportSync.TrackInfoReader for .NET
 ===
-[![NuGet](https://img.shields.io/nuget/v/ShairportSync.TrackInfoReader.svg?maxAge=2592000)](https://www.nuget.org/packages/ShairportSync.TrackInfoReader/)
+[![NuGet](https://img.shields.io/nuget/v/ShairportSync.TrackInfoReader.svg?maxAge=3600)](https://www.nuget.org/packages/ShairportSync.TrackInfoReader/)
 [![GitHub license](https://img.shields.io/github/license/idubnori/shairport-sync-trackinfo-reader.svg)](https://github.com/idubnori/shairport-sync-trackinfo-reader/blob/master/LICENSE)
 [![Build status](https://ci.appveyor.com/api/projects/status/y4vtm6cnqvm4ie5i/branch/master?svg=true)](https://ci.appveyor.com/project/idubnori/shairport-sync-trackinfo-reader/branch/master)
 
