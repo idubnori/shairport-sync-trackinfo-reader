@@ -1,0 +1,49 @@
+version: 0.2.{build}
+
+image: Visual Studio 2017
+
+configuration: Release
+platform: Any CPU
+
+skip_tags: true
+
+build_script:
+  - cmd: powershell -NoProfile -ExecutionPolicy unrestricted -Command .\build.ps1 -Target "All"
+
+after_build:
+- cmd: >-
+    dotnet publish -c Release -r linux-arm %APPVEYOR_BUILD_FOLDER%\examples\ConsoleViewer\ConsoleViewer.csproj -o .\publish\console-viewer
+
+    dotnet publish -c Release -r linux-arm %APPVEYOR_BUILD_FOLDER%\examples\WebViewer\WebViewer.csproj -o .\publish\web-viewer
+    
+    7z a examples-linux-arm.zip "%APPVEYOR_BUILD_FOLDER%\examples\ConsoleViewer\publish\console-viewer" "%APPVEYOR_BUILD_FOLDER%\examples\WebViewer\publish\web-viewer"
+
+test: off
+
+artifacts:
+- path: '*.zip'
+  name: Release
+- path: 'Build\Packages\*.nupkg'
+  name: NuGet
+
+nuget:
+  account_feed: false
+  project_feed: false
+  disable_publish_on_pr: true
+
+deploy:
+  - provider: NuGet
+    api_key:
+      secure: 6yUDJeVKsTVTweUBj3nGGvH+DCi4oGIHjxPJCIK/nxkgJi2DbRdXZfvyq3b2X2J5
+    skip_symbols: false
+    on:
+      branch: master
+  - provider: GitHub
+    artifact: /.*\.(nupkg|zip)/
+    auth_token:
+      secure: VbjLFMcw/pLm4Ol7Sl5shMPkMCIdeFSH1peOj+aWSY3ljKjMWcPtntREG6Fe9QGS
+    tag: v$(appveyor_build_version)
+    draft: true
+    prerelease: false
+    on:
+      branch: master
