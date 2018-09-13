@@ -50,7 +50,7 @@ namespace WebViewer
 
             app.UseSignalR(routes =>
             {
-                routes.MapHub<TrackHub>("tracks");
+                routes.MapHub<TrackHub>("/tracks");
             });
         }
     }
