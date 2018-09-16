@@ -10,5 +10,9 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
+# - script: dotnet build --configuration $(buildConfiguration)
+#   displayName: 'dotnet build $(buildConfiguration)'
+- script: |
+        dotnet publish -c Release -r linux-arm ./examples/ConsoleViewer/ConsoleViewer.csproj -o ./publish/console-viewer
+        dotnet publish -c Release -r linux-arm ./examples/WebViewer/WebViewer.csproj -o ./publish/web-viewer
+  displayName: Publish example apps
