@@ -9,12 +9,12 @@ pool:
 variables:
   buildConfiguration: 'Release'
   patch: $[counter('versioncounter', 9000)]
-  version: 0.2.$(patch)
+  build_version: 0.2.$(patch)
 
 steps:
 - script: |
         chmod +x build.sh
-        ./build.sh --Target All
+        ./build.sh --target=All
   displayName: Run Cake build
 
 # - script: dotnet build --configuration $(buildConfiguration)

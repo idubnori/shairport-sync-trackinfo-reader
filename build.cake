@@ -34,9 +34,10 @@ using System.Xml;
 var VERSION = GetArgumentVersion();
 var PROJECT_DIR = Context.Environment.WorkingDirectory.FullPath;
 var CONFIGURATION = "Release";
+var ARTIFACT_DIR = EnvironmentVariable("BUILD_ARTIFACTSTAGINGDIRECTORY"); // TODO
 
 // IMPORTANT DIRECTORIES
-var DIR_OUTPUT_PACKAGES = System.IO.Path.Combine(PROJECT_DIR, "Build", "Packages");
+var DIR_OUTPUT_PACKAGES = ARTIFACT_DIR;// System.IO.Path.Combine(PROJECT_DIR, "Build", "Packages");
 var DIR_OUTPUT_REPORTS = System.IO.Path.Combine(PROJECT_DIR, "Build", "Reports");
 
 // IMPORTANT FILES
@@ -156,7 +157,7 @@ Task("All")
 
 Version GetArgumentVersion()
 {
-    return Version.Parse(EnvironmentVariable("APPVEYOR_BUILD_VERSION") ?? "0.0.1");
+    return Version.Parse(EnvironmentVariable("BUILD_VERSION") ?? "0.0.1");
 }
 
 string GetDotNetCoreArgsVersions()
