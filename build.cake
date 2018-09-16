@@ -184,19 +184,19 @@ void SetReleaseNotes(string filePath)
             filePath));
     }
 
-    if (!AppVeyor.IsRunningOnAppVeyor)
-    {
-        Information("Skipping update of release notes");
-        return;
-    } 
-    else
-    {
+    // if (!AppVeyor.IsRunningOnAppVeyor)
+    // {
+    //     Information("Skipping update of release notes");
+    //     return;
+    // } 
+    // else
+    // {
         Information(string.Format("Setting release notes in '{0}'", filePath));
         
         node.InnerText = releaseNotes;
 
         xmlDocument.Save(filePath);
-    }
+    // }
 }
 
 void UploadArtifact(string filePath)
@@ -207,16 +207,16 @@ void UploadArtifact(string filePath)
         return;
     }
 
-    if (AppVeyor.IsRunningOnAppVeyor)
-    {
+    // if (AppVeyor.IsRunningOnAppVeyor)
+    // {
         Information("Uploading artifact: {0}", filePath);
 
         AppVeyor.UploadArtifact(filePath);
-    }
-    else
-    {
-        Information("Not on AppVeyor, skipping artifact upload of: {0}", filePath);
-    }
+    // }
+    // else
+    // {
+    //     Information("Not on AppVeyor, skipping artifact upload of: {0}", filePath);
+    // }
 }
 
 void UploadTestResults(string filePath)
@@ -227,8 +227,8 @@ void UploadTestResults(string filePath)
         return;
     }
 
-    if (AppVeyor.IsRunningOnAppVeyor)
-    {
+    // if (AppVeyor.IsRunningOnAppVeyor)
+    // {
         Information("Uploading test results: {0}", filePath);
 
         try
@@ -257,11 +257,11 @@ void UploadTestResults(string filePath)
         AppVeyor.UploadTestResults(
             filePath,
             AppVeyorTestResultsType.NUnit3);*/
-    }    
-    else
-    {
-        Information("Not on AppVeyor, skipping test result upload of: {0}", filePath);
-    }
+    // }    
+    // else
+    // {
+    //     Information("Not on AppVeyor, skipping test result upload of: {0}", filePath);
+    // }
 }
 
 string ExecuteCommand(string exePath, string arguments = null, string workingDirectory = null)
