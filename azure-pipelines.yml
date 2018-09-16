@@ -16,3 +16,16 @@ steps:
         dotnet publish -c Release -r linux-arm ./examples/ConsoleViewer/ConsoleViewer.csproj -o $(System.WorkFolder)/publish/console-viewer
         dotnet publish -c Release -r linux-arm ./examples/WebViewer/WebViewer.csproj -o $(System.WorkFolder)/publish/web-viewer
   displayName: Publish example apps
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(System.WorkFolder)/publish/' 
+    includeRootFolder: false
+    archiveFile: '$(Build.ArtifactStagingDirectory)/examples-linux-arm.zip' 
+    replaceExistingArchive: true 
+  displayName: Archive example apps
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    artifactName: 'drop'
+  displayName: Publish build artifact
