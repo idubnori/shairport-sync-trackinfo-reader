@@ -17,6 +17,12 @@ steps:
         ./build.sh --target=All
   displayName: Run Cake build
 
+- task: PublishTestResults@2
+  inputs:
+    testRunner: VSTest
+    testResultsFiles: '**/*.trx' 
+  displayName: Publish test results
+
 # - script: dotnet build --configuration $(buildConfiguration)
 #   displayName: 'dotnet build $(buildConfiguration)'
 - script: |

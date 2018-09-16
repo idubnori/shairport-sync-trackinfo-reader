@@ -102,10 +102,16 @@ Task("Test")
     .IsDependentOn("Build")
     .Does(() =>
         {
+            var settings = new DotNetCoreTestSettings
+            {
+                // Outputing test results as XML so that VSTS can pick it up
+                ArgumentCustomization = args => args.Append("--logger \"trx\"")
+            };
+
 		    var projectFiles = GetFiles("./tests/**/*.csproj");
 			foreach(var file in projectFiles)
 			{
-				DotNetCoreTest(file.FullPath);
+				DotNetCoreTest(file.FullPath, settings);
 			}
 
         })
