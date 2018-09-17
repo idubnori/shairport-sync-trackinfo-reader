@@ -63,7 +63,7 @@ shairport-sync --pipe=/tmp/shairport-sync-metadata
 Browse ```http://<Pi HostName>:5000/```<br>
 
 ## How to Build
-Install [NET Core 2.0 SDK](https://www.microsoft.com/net/download/).
+Install [NET Core 2.1 SDK](https://www.microsoft.com/net/download/).
 #### VisualStudio / Rider
 Open `TrackInfoReader.sln`. And Build it.
 #### Console
