@@ -27,6 +27,6 @@ i.e. works on Raspberry Pi 2 / 3, Mac, Linux, etc.
     <DocumentationFile>bin\Release\netstandard2.0\ShairportSync.TrackInfoReader.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="System.Reactive" Version="4.1.0" />
+    <PackageReference Include="System.Reactive" Version="4.1.1" />
   </ItemGroup>
 </Project>
