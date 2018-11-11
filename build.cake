@@ -39,12 +39,7 @@ var CONFIGURATION = "Release";
 var DIR_OUTPUT_PACKAGES = System.IO.Path.Combine(PROJECT_DIR, "Build", "Packages");
 var DIR_OUTPUT_REPORTS = System.IO.Path.Combine(PROJECT_DIR, "Build", "Reports");
 
-// IMPORTANT FILES
-//var FILE_OPENCOVER_REPORT = System.IO.Path.Combine(DIR_OUTPUT_REPORTS, "opencover-results.xml");
-//var FILE_NUNIT_XML_REPORT = System.IO.Path.Combine(DIR_OUTPUT_REPORTS, "nunit-results.xml");
-//var FILE_NUNIT_TXT_REPORT = System.IO.Path.Combine(DIR_OUTPUT_REPORTS, "nunit-output.txt");
 var FILE_SOLUTION = System.IO.Path.Combine(PROJECT_DIR, "TrackInfoReader.sln");
-
 var RELEASE_NOTES = ParseReleaseNotes(System.IO.Path.Combine(PROJECT_DIR, "RELEASE_NOTES.md"));
 
 // =====================================================================================================
@@ -255,7 +250,8 @@ void UploadTestResults(string filePath)
         // This should work, but doesn't seem to
         AppVeyor.UploadTestResults(
             filePath,
-            AppVeyorTestResultsType.NUnit3);*/
+            AppVeyorTestResultsType.NUnit3);
+        */
     }    
     else
     {
@@ -295,43 +291,6 @@ string ExecuteCommand(string exePath, string arguments = null, string workingDir
 
         return output;
     }
-}
-
-void ExecuteTest(string files, string resultsFile)
-{
-	//OpenCover(tool => 
-	//	{
-	//		tool.NUnit3(
-	//			files,
-	//			new NUnit3Settings
-	//				{
-	//					Framework = "net-4.5",
-	//					Timeout = 600000,
-	//					ShadowCopy = false,
-	//					NoHeader = true,
-	//					NoColor = true,
-	//					DisposeRunners = true,
-	//					OutputFile = FILE_NUNIT_TXT_REPORT,
-	//					Results = new []
- //                           {
- //                               new NUnit3Result
- //                                   {
- //                                       FileName = resultsFile,
- //                                   }
- //                           }
-	//				});
- //       },
- //   new FilePath(FILE_OPENCOVER_REPORT),
- //   new OpenCoverSettings
- //       {
- //           ArgumentCustomization = aggs => aggs.Append("-returntargetcode"),
- //           OldStyle = true,
- //           MergeOutput = true            
- //       }
- //       .WithFilter("+[TrackInfoReader*]*")
- //       .WithFilter("-[*Tests]*")
- //       .WithFilter("-[*TestHelpers]*")
- //       .WithFilter("-[*Shipping*]*"));
 }
 
 RunTarget(Argument<string>("target", "Package"));
