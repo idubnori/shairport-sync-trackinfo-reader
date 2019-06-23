@@ -20,7 +20,7 @@ Contains two usage example apps below.
 #### Install via NuGet
 Package Manager: 
 ```
-PM> Install-Package ShairportSync.TrackInfoReader –IncludePrerelease
+PM> Install-Package ShairportSync.TrackInfoReader
 ```
 
 .NET CLI:
@@ -44,7 +44,7 @@ curl -s https://api.github.com/repos/idubnori/shairport-sync-trackinfo-reader/re
 | cut -d '"' -f 4 \
 | wget -qi -
 unzip examples-linux-arm.zip
-chmod 744 ./console-viewer/ConsoleViewer ./web-viewer/WebViewer
+chmod +x ./console-viewer/ConsoleViewer ./web-viewer/WebViewer
 ```
 Run shairport-sync with metadata pipe parameter.
 ```bash
