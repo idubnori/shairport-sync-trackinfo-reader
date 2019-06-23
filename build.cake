@@ -34,9 +34,10 @@ using System.Xml;
 var VERSION = GetArgumentVersion();
 var PROJECT_DIR = Context.Environment.WorkingDirectory.FullPath;
 var CONFIGURATION = "Release";
+var ARTIFACT_DIR = EnvironmentVariable("BUILD_ARTIFACTSTAGINGDIRECTORY"); // TODO
 
 // IMPORTANT DIRECTORIES
-var DIR_OUTPUT_PACKAGES = System.IO.Path.Combine(PROJECT_DIR, "Build", "Packages");
+var DIR_OUTPUT_PACKAGES = ARTIFACT_DIR;// System.IO.Path.Combine(PROJECT_DIR, "Build", "Packages");
 var DIR_OUTPUT_REPORTS = System.IO.Path.Combine(PROJECT_DIR, "Build", "Reports");
 
 // IMPORTANT FILES
@@ -101,10 +102,16 @@ Task("Test")
     .IsDependentOn("Build")
     .Does(() =>
         {
+            var settings = new DotNetCoreTestSettings
+            {
+                // Outputing test results as XML so that VSTS can pick it up
+                ArgumentCustomization = args => args.Append("--logger \"trx\"")
+            };
+
 		    var projectFiles = GetFiles("./tests/**/*.csproj");
 			foreach(var file in projectFiles)
 			{
-				DotNetCoreTest(file.FullPath);
+				DotNetCoreTest(file.FullPath, settings);
 			}
 
         })
@@ -156,7 +163,7 @@ Task("All")
 
 Version GetArgumentVersion()
 {
-    return Version.Parse(EnvironmentVariable("APPVEYOR_BUILD_VERSION") ?? "0.0.1");
+    return Version.Parse(EnvironmentVariable("BUILD_VERSION") ?? "0.0.1");
 }
 
 string GetDotNetCoreArgsVersions()
@@ -183,19 +190,19 @@ void SetReleaseNotes(string filePath)
             filePath));
     }
 
-    if (!AppVeyor.IsRunningOnAppVeyor)
-    {
-        Information("Skipping update of release notes");
-        return;
-    } 
-    else
-    {
+    // if (!AppVeyor.IsRunningOnAppVeyor)
+    // {
+    //     Information("Skipping update of release notes");
+    //     return;
+    // } 
+    // else
+    // {
         Information(string.Format("Setting release notes in '{0}'", filePath));
         
         node.InnerText = releaseNotes;
 
         xmlDocument.Save(filePath);
-    }
+    // }
 }
 
 void UploadArtifact(string filePath)
@@ -206,16 +213,16 @@ void UploadArtifact(string filePath)
         return;
     }
 
-    if (AppVeyor.IsRunningOnAppVeyor)
-    {
+    // if (AppVeyor.IsRunningOnAppVeyor)
+    // {
         Information("Uploading artifact: {0}", filePath);
 
         AppVeyor.UploadArtifact(filePath);
-    }
-    else
-    {
-        Information("Not on AppVeyor, skipping artifact upload of: {0}", filePath);
-    }
+    // }
+    // else
+    // {
+    //     Information("Not on AppVeyor, skipping artifact upload of: {0}", filePath);
+    // }
 }
 
 void UploadTestResults(string filePath)
@@ -226,8 +233,8 @@ void UploadTestResults(string filePath)
         return;
     }
 
-    if (AppVeyor.IsRunningOnAppVeyor)
-    {
+    // if (AppVeyor.IsRunningOnAppVeyor)
+    // {
         Information("Uploading test results: {0}", filePath);
 
         try
@@ -256,11 +263,11 @@ void UploadTestResults(string filePath)
         AppVeyor.UploadTestResults(
             filePath,
             AppVeyorTestResultsType.NUnit3);*/
-    }    
-    else
-    {
-        Information("Not on AppVeyor, skipping test result upload of: {0}", filePath);
-    }
+    // }    
+    // else
+    // {
+    //     Information("Not on AppVeyor, skipping test result upload of: {0}", filePath);
+    // }
 }
 
 string ExecuteCommand(string exePath, string arguments = null, string workingDirectory = null)
