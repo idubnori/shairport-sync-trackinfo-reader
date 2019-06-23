@@ -63,7 +63,7 @@ shairport-sync --pipe=/tmp/shairport-sync-metadata
 Browse ```http://<Pi HostName>:5000/```<br>
 
 ## How to Build
-Install [NET Core 2.1 SDK](https://www.microsoft.com/net/download/).
+Install [NET Core 2.2 SDK](https://www.microsoft.com/net/download/).
 #### VisualStudio / Rider
 Open `TrackInfoReader.sln`. And Build it.
 #### Console
@@ -80,7 +80,7 @@ dotnet publish -c Release -r linux-arm
 ```
 
 ## License
-ShairportSync.TrackInfoReader is Copyright © 2018 idubnori under the [MIT License](./LICENSE).
+ShairportSync.TrackInfoReader is Copyright © 2019 idubnori under the [MIT License](./LICENSE).
 
 #### Dependencies
  - `build.cake` is based on [EventFlow](https://github.com/eventflow/EventFlow)
