@@ -7,7 +7,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
     <Authors>idubnori</Authors>
     <Company />
     <Product />
@@ -17,7 +17,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-Linux|AnyCPU'" />
   <ItemGroup>
-    <PackageReference Include="System.Reactive" Version="4.1.1" />
+    <PackageReference Include="System.Reactive" Version="4.1.5" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\TrackInfoReader\TrackInfoReader.csproj" />
