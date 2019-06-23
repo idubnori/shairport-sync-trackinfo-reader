@@ -81,3 +81,6 @@ dotnet publish -c Release -r linux-arm
 
 ## License
 ShairportSync.TrackInfoReader is Copyright © 2018 idubnori under the [MIT License](./LICENSE).
+
+#### Dependencies
+ - `build.cake` is based on [EventFlow](https://github.com/eventflow/EventFlow)

@@ -1,5 +1,5 @@
 ﻿### New in 0.3 (not released yet)
-* _Nothing yet_
+* Clean up CI script
 
 ### New in 0.2.31 (released 2018-09-13)
 * Updated reference packages to the latest
