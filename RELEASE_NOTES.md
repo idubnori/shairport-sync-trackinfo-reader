@@ -1,4 +1,7 @@
-﻿### New in 0.3 (not released yet)
+﻿### New in 0.4 (not released yet)
+* _Nothing yet_
+
+### New in 0.3 (not released yet)
 * Clean up CI script
 * Upgraded to .NET Core 2.2 and reference packages to the latest version
 
