@@ -16,7 +16,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-Linux|AnyCPU'" />
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.5" />
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.6" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
     <PackageReference Include="System.Reactive" Version="4.1.5" />
